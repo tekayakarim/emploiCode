@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ApiEnseignantService } from '../../services/api-enseignant.service';
+
+import { User } from "../../models/user";
+import { EnseignantService } from "../../services/enseignant.service";
 @Component({
   selector: 'app-enseignants',
   templateUrl: './enseignants.component.html',
@@ -11,7 +14,10 @@ export class EnseignantsComponent implements OnInit {
   appels:any = [];
   idU : number ; 
   modalContent:undefined ;
-  constructor(private service:ApiEnseignantService, private toastr: ToastrService, private modalService: NgbModal){
+
+  elements: User[];
+  constructor(private service:ApiEnseignantService, private toastr: ToastrService, private modalService: NgbModal
+    , public enseignantService: EnseignantService){
     console.log("user ID : "+localStorage.getItem("userID"));
     this.idU = parseInt(localStorage.getItem("userID"));
   }
@@ -20,7 +26,7 @@ export class EnseignantsComponent implements OnInit {
 
   }
   ngOnInit(): void {  
-    
+   this. getAllEnseignant(); 
   }
  
 
@@ -34,6 +40,18 @@ export class EnseignantsComponent implements OnInit {
     
    }
  
+   getAllEnseignant() {
+    
+    this.enseignantService
+      .getAllEnseignant()
+      .subscribe((data) => {
+        if (data) {
+          console.warn(data);
+          this.elements = data;
+        }
+
+      });
+  }
    
 }
   

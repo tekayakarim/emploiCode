@@ -17,41 +17,18 @@
                </tr>
             </thead>
             <tbody>
-               <tr >
-                  <td>Boujebli</td>
-                  <td>Malek</td> 
-                  <td>m.boujebli@pi.tn</td>
-                  <td>98334568</td>
+               <tr *ngFor="let el of elements; let i = index">
+                  <td>{{ el.nomUser }}</td>
+                  <td>{{ el.prenomUser }}</td> 
+                  <td>{{ el.emailUser }}</td>
+                  <td>{{ el.telUser }}</td>
                   <td>
                      <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
                      <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
                   </td>
                </tr> 
             </tbody>
-            <tbody>
-               <tr >
-                  <td>Kacem</td>
-                  <td>Imen</td> 
-                  <td>i.kacem@pi.tn</td>
-                  <td>56789466</td>
-                  <td>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
-                  </td>
-               </tr> 
-            </tbody>
-            <tbody>
-               <tr >
-                  <td>Soltani</td>
-                  <td>Asma</td> 
-                  <td>a.Soltani@pi.tn</td>
-                  <td>22456152/td>
-                  <td>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
-                  </td>
-               </tr> 
-            </tbody>
+      
          </table>
       </div>
     </div>

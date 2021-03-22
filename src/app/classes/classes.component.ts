@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiClasseService } from 'src/app/services/api-classe.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { Classe } from "../models/classe";
 import { ClasseService } from "../services/classe.service";
 @Component({
