@@ -1,0 +1,100 @@
+<div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+    <div class="iq-card-header d-flex justify-content-between">
+       <div class="iq-header-title">
+          <h4 class="card-title">Liste des étudiants</h4>
+       </div> 
+    </div>
+    <div class="iq-card-body">
+      <div class="table-responsive">
+         <table class="table mb-0 table-borderless">
+            <thead>
+               <tr>
+                  <th scope="col">Nom</th> 
+                  <th scope="col">Prenom</th> 
+                  <th scope="col">Email</th>
+                  <th scope="col">Telephone</th> 
+                  <th scope="col">Code</th> 
+                  <th scope="col">Action</th> 
+               </tr>
+            </thead>
+            <tbody>
+               <tr >
+                  <td>ben khalifa</td>
+                  <td>amin</td> 
+                  <td>ma.benkhalifa17012@pi.tn</td>
+                  <td>20188930</td>
+                  <td>17012</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+            <tbody>
+               <tr >
+                  <td>Obame Assoumou</td>
+                  <td>Landry</td> 
+                  <td>l.obame17112@pi.tn</td>
+                  <td>24555972
+                  </td>
+                  <td>17112</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+            <tbody>
+               <tr >
+                  <td>Konate</td>
+                  <td>Aissata</td> 
+                  <td>Konate1456@pi.tn</td>
+                  <td>22145789</td>
+                  <td>1456</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+            <tbody>
+               <tr >
+                  <td>Mhamdi</td>
+                  <td>Chaima</td> 
+                  <td>m.mhamdi17129@pi.tn</td>
+                  <td>22634789</td>
+                  <td>17129</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+         </table>
+      </div>
+    </div>
+ </div>
+
+
+ <ng-template #infoModal let-modal>
+   <div class="modal-header">
+    <h5 class="modal-title" id="editProfileLabel">Détails</h5> 
+   </div>
+   
+   <div class="modal-body">  
+      <div class="text-center mt-3">
+         <h4><b>{{modalContent.nom}} {{modalContent.prenom}}</b></h4>
+         <span class="badge border border-primary text-primary">{{modalContent.role}}</span>
+         <p><u> Date </u> : {{ modalContent.date_envoie }}<br>
+            <u></u> : {{ modalContent.contenue_reclamation }}<br></p>
+         <br>*******************<br>
+         <p><u>Date Réponse</u> : {{ modalContent.date_reponse }}<br>
+            <u>Réponse</u> : {{modalContent.contenue_reponse }}</p> 
+      </div>
+    <br>  
+     <div class="modal-footer">
+      <button type="button" class="btn btn-dark" (click)="modal.dismiss()">Fermer</button> 
+      <button type="button" class="btn btn-primary"  *ngIf="isReclamant" (click)="goToAppel(modalContent.id_reponse)">Faire un Appel</button> 
+     </div> 
+   </div>
+  </ng-template>

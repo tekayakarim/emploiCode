@@ -1,0 +1,82 @@
+<div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+    <div class="iq-card-header d-flex justify-content-between">
+       <div class="iq-header-title">
+          <h4 class="card-title">Liste des seances</h4>
+       </div> 
+    </div>
+    <div class="iq-card-body">
+      <div class="table-responsive">
+         <table class="table mb-0 table-borderless">
+            <thead>
+               <tr>
+                  <th scope="col">Code</th> 
+                  <th scope="col">Heure debut</th> 
+                  <th scope="col">Heure fin</th>
+                  <th scope="col">date</th> 
+                  <th scope="col">Action</th> 
+               </tr>
+            </thead>
+            <tbody>
+               <tr >
+                  <td>1234</td>
+                  <td>8:00</td> 
+                  <td>10:00</td>
+                  <td>10-12-2020</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+            <tbody>
+               <tr >
+                  <td>5678</td>
+                  <td>12:00</td> 
+                  <td>14:00</td>
+                  <td>11-12-2020</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+            <tbody>
+               <tr >
+                  <td>6698</td>
+                  <td>14:00</td> 
+                  <td>16:00</td>
+                  <td>11-12-2020</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+         </table>
+      </div>
+    </div>
+ </div>
+
+
+ <ng-template #infoModal let-modal>
+   <div class="modal-header">
+    <h5 class="modal-title" id="editProfileLabel">Détails</h5> 
+   </div>
+   
+   <div class="modal-body">  
+      <div class="text-center mt-3">
+         <h4><b>{{modalContent.nom}} {{modalContent.prenom}}</b></h4>
+         <span class="badge border border-primary text-primary">{{modalContent.role}}</span>
+         <p><u> Date Réclamation</u> : {{ modalContent.date_envoie }}<br>
+            <u>Réclamation</u> : {{ modalContent.contenue_reclamation }}<br></p>
+         <br>*******************<br>
+         <p><u>Date Réponse</u> : {{ modalContent.date_reponse }}<br>
+            <u>Réponse</u> : {{modalContent.contenue_reponse }}</p> 
+      </div>
+    <br>  
+     <div class="modal-footer">
+      <button type="button" class="btn btn-dark" (click)="modal.dismiss()">Fermer</button> 
+      <button type="button" class="btn btn-primary"  *ngIf="isReclamant" (click)="goToAppel(modalContent.id_reponse)">Faire un Appel</button> 
+     </div> 
+   </div>
+  </ng-template>

@@ -1,0 +1,103 @@
+<section class="sign-in-page">
+    <div class="container sign-in-page-bg mt-5 p-0">
+        <div class="row no-gutters">
+            <div class="col-md-6 text-center">
+                <div class="sign-in-detail text-white">
+                    <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true" data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="0">
+                        <div class="item">
+                            <img src="assets/images/ecole.png" class="img-fluid mb-4" alt="logo"> 
+                            <p><b>Ecole Polytechnique Internationale Privée de Tunis.</b></p>
+                            <p>Créée en 2013, l’École Polytechnique Internationale privée de Tunis, est un établissement d’enseignement supérieur fondé essentiellement par des acteurs institutionnels du monde professionnel appartenant aux secteurs des Banques, des Assurances et de l’Industrie.</p>
+                            <p><u><b>Adresse</b></u> : Rue du Lac d'Annecy,  Les Berges du Lac 1053, Tunis, Tunisie.</p>
+                            <p><u><b>Téléphone</b></u> : (+216)-70 026 426 | (+216)-29 310 031</p>
+                            <p><u><b>E-mail</b></u> : contact@pi.tn</p><br><br>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 position-relative">
+                <div class="sign-in-from">
+                    <h1 class="mb-0">Inscription</h1>
+                    <form class="mt-4" [formGroup]="addUSR" (ngSubmit)="saveReclamant()">
+                        <div class="form-row">
+                            <div class="col"> 
+                                <label for="tt">Nom :</label>
+                                <input type="text" class="form-control mb-0" id="nn" name="nom" formControlName="nom" >
+                                <div *ngIf="nom.touched && nom.invalid">
+                                    <small *ngIf="nom.errors.required" class="text-danger">Nom  est Obilgatoire<br></small>
+                                </div>
+                            </div>
+                            <div class="col"> 
+                                <label for="tt">Prénom :</label>
+                                <input type="text" class="form-control mb-0" id="pp" name="prenom" formControlName="prenom" >
+                                <div *ngIf="prenom.touched && prenom.invalid">
+                                    <small *ngIf="prenom.errors.required" class="text-danger">Prénom est Obilgatoire<br></small>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="form-row">
+                            <div class="col"> 
+                                <label for="tt">Téléphone :</label>
+                                <input type="text" class="form-control mb-0" id="tt" name="tel" formControlName="tel" >
+                                <div *ngIf="tel.touched && tel.invalid">
+                                    <small *ngIf="tel.errors.required" class="text-danger">Téléphone  est Obilgatoire<br></small>
+                                    <small *ngIf="tel.errors.pattern" class="text-danger">Téléphone invalide<br></small>
+                                    <small *ngIf="tel.errors.minlength" class="text-danger">Le Téléphone doit contenir au moins 8 chiffres</small>
+                                    <small *ngIf="tel.errors.maxlength" class="text-danger">Le Téléphone doit contenir au max 8 chiffres </small>
+                                </div>
+                            </div>
+                            <div class="col"> 
+                                <label for="ee">E-mail :</label>
+                                <input type="text" class="form-control mb-0" id="ee" name="mail" formControlName="mail" >
+                                <div *ngIf="mail.touched && mail.invalid">
+                                    <small *ngIf="mail.errors.required" class="text-danger">E-mail  est Obilgatoire<br></small>
+                                    <small *ngIf="mail.errors.email" class="text-danger">E-mail invalide<br></small>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="form-row"> 
+                            <div class="col"> 
+                                <label for="gg">Groupe :</label> 
+                                <select class="form-control mb-0" id="gg"  name="groupe" formControlName="groupe">
+                                    <option value="">Choisir Groupe</option>
+                                    <option value="PI">Equipe PI</option>
+                                    <option value="LBS">Equipe Law & Business School</option> 
+                                </select>
+                                <div *ngIf="groupe.touched && groupe.invalid">
+                                    <small *ngIf="groupe.errors.required" class="text-danger">Groupe est Obilgatoire<br></small>
+                                </div>
+                            </div>
+                            <div class="col"> 
+                                <label for="rr">Rôle :</label> 
+                                <select class="form-control mb-0" id="rr"  name="role" formControlName="role">
+                                    <option value="">Choisir Rôle</option>
+                                    <option value="Etudiant">Etudiant </option> 
+                                    <option value="Enseignant">Enseignant </option> 
+                                    <option value="Parent">Parent </option> 
+                                    <option value="Entreprise">Entreprise </option>  
+                                </select>
+                                <div *ngIf="role.touched && role.invalid">
+                                    <small *ngIf="role.errors.required" class="text-danger">Groupe est Obilgatoire<br></small>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="form-row"> 
+                            <div class="col"> 
+                                <label for="pa">Mot de passe : </label>
+                                <input type="password" class="form-control mb-0" id="pa" name="password" formControlName="password" >
+                                <div *ngIf="password.touched && password.invalid">
+                                    <small *ngIf="password.errors.required" class="text-danger">Mot de passe est Obilgatoire<br></small>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="d-inline-block w-100"> 
+                            <button type="submit" [disabled]="addUSR.invalid" class="btn btn-primary float-right">Valider</button>
+                        </div>
+                        <br>
+                         
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

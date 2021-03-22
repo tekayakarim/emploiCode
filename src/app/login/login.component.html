@@ -1,0 +1,48 @@
+<!-- Sign in Start -->
+<section class="sign-in-page">
+    <div class="container sign-in-page-bg mt-5 p-0">
+        <div class="row no-gutters">
+            <div class="col-md-6 text-center">
+                <div class="sign-in-detail text-white">
+                    <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true" data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="0">
+                        <div class="item">
+                            <img src="assets/images/ecole.png" class="img-fluid mb-4" alt="logo"> 
+                            <p><b>Ecole Polytechnique Internationale Privée de Tunis.</b></p>
+                            <p>Adresse : Rue du Lac d'Annecy,  Les Berges du Lac 1053, Tunis, Tunisie.</p>
+                            <p>Téléphone : (+216)-70 026 426 | (+216)-29 310 031</p>
+                            <p>E-mail : contact@pi.tn</p><br><br>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 position-relative">
+                <div class="sign-in-from">
+                    <h1 class="mb-0">Connexion</h1> 
+                    <form class="mt-4"  [formGroup]="logForm" (ngSubmit)="verifUser()">
+                        <div class="form-group">
+                            <label>E-mail :</label>
+                            <input type="text" class="form-control mb-0"  name="mail" formControlName="mail" >
+                            <div *ngIf="mail.touched && mail.invalid">
+                                <small *ngIf="mail.errors.required" class="text-danger">E-mail est Obilgatoire<br></small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mot de passe</label> 
+                            <input type="password" class="form-control mb-0"  name="password" formControlName="password" >
+                            <div *ngIf="password.touched && password.invalid">
+                                <small *ngIf="password.errors.required" class="text-danger">Mot de passe est Obilgatoire<br></small>
+                            </div>
+                        </div>
+                        <div class="d-inline-block w-100"> 
+                            <button type="submit" class="btn btn-primary float-right" [disabled]="logForm.invalid">Se Connecter</button>
+                        </div>
+                        <div class="sign-info">
+                            <span class="dark-color d-inline-block line-height-2">vous n'avez pas de compte ? <a routerLink="../register">Créer un Compte</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Sign in END -->

@@ -1,0 +1,88 @@
+<div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+    <div class="iq-card-header d-flex justify-content-between">
+       <div class="iq-header-title">
+          <h4 class="card-title">Liste des enseignants</h4>
+       </div> 
+    </div>
+    <div class="iq-card-body">
+      <div class="table-responsive">
+         <table class="table mb-0 table-borderless">
+            <thead>
+               <tr>
+                  <th scope="col">nom</th>
+                  <th scope="col">prenom</th>
+                  <th scope="col">email</th>
+                  <th scope="col">telephone</th> 
+                  <th scope="col">Action</th> 
+               </tr>
+            </thead>
+            <tbody>
+               <tr >
+                  <td>Boujebli</td>
+                  <td>Malek</td> 
+                  <td>m.boujebli@pi.tn</td>
+                  <td>98334568</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+            <tbody>
+               <tr >
+                  <td>Kacem</td>
+                  <td>Imen</td> 
+                  <td>i.kacem@pi.tn</td>
+                  <td>56789466</td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+            <tbody>
+               <tr >
+                  <td>Soltani</td>
+                  <td>Asma</td> 
+                  <td>a.Soltani@pi.tn</td>
+                  <td>22456152/td>
+                  <td>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                  </td>
+               </tr> 
+            </tbody>
+         </table>
+      </div>
+    </div>
+ </div>
+
+
+ <ng-template #infoModal let-modal>
+   <div class="modal-header">
+    <h5 class="modal-title" id="editProfileLabel">Détails enseignants</h5> 
+   </div>
+   
+   <div class="modal-body"> 
+      <div class="user-profile text-center">
+         <img src="assets/images/ecole.png" alt="Polytech INTL"  width="220">
+      </div>
+      <div class="text-center mt-3">
+         <h4><b>{{modalContent.nom}} {{modalContent.prenom}}</b></h4>
+         <span class="badge border border-primary text-primary">{{modalContent.role}}</span>
+         <p><u>Date Envoie </u>: {{ modalContent.date_envoie }}<br>
+         <u>Sujet </u>: {{ modalContent.sujet }}<br>
+         <u>Contenue Réclamation</u>: {{modalContent.contenue_reclamation }}</p> 
+         ***********************************<br>
+         <p><u>Date Réponse </u>: {{ modalContent.date_reponse }}<br> 
+            <u>Contenue Réponse</u>: {{modalContent.contenue_reponse }}</p> 
+         ***********************************<br>   
+         <p><u>Date Appel </u>: {{ modalContent.date_appel }}<br> 
+            <u>Contenue Appel</u>: {{modalContent.contenue_appel }}</p> 
+      </div>
+    <br>  
+     <div class="modal-footer">
+      <button type="button" class="btn btn-dark" (click)="modal.dismiss()">Fermer</button> 
+     </div> 
+   </div>
+  </ng-template>

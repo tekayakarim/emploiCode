@@ -1,0 +1,21 @@
+<div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+    <div class="iq-card-header d-flex justify-content-between">
+        <div class="iq-header-title">
+            <h4 class="card-title">Ajout d'une seance</h4>
+        </div>
+    </div>
+    <div class="iq-card-body">
+        <div class="table-responsive">
+            <form [formGroup]="addAPP" (ngSubmit)="saveEtudiant()"> 
+                <div class="form-group">
+                    <label for="cc">Seance :</label>
+                    <textarea type="text" id="cc" rows="5" class="form-control" name="contenue" formControlName="contenue" ></textarea>
+                    <div *ngIf="contenue.touched && contenue.invalid">
+                        <small *ngIf="contenue.errors.required" class="text-danger">Une seance est obilgatoire<br></small>
+                    </div>
+                </div>
+                <button type="submit" [disabled]="addAPP.invalid" class="btn btn-primary">Envoyer</button> 
+            </form>
+        </div>
+    </div>
+</div>
