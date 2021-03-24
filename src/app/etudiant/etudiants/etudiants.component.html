@@ -18,52 +18,12 @@
                </tr>
             </thead>
             <tbody>
-               <tr >
-                  <td>ben khalifa</td>
-                  <td>amin</td> 
-                  <td>ma.benkhalifa17012@pi.tn</td>
-                  <td>20188930</td>
-                  <td>17012</td>
-                  <td>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
-                  </td>
-               </tr> 
-            </tbody>
-            <tbody>
-               <tr >
-                  <td>Obame Assoumou</td>
-                  <td>Landry</td> 
-                  <td>l.obame17112@pi.tn</td>
-                  <td>24555972
-                  </td>
-                  <td>17112</td>
-                  <td>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
-                  </td>
-               </tr> 
-            </tbody>
-            <tbody>
-               <tr >
-                  <td>Konate</td>
-                  <td>Aissata</td> 
-                  <td>Konate1456@pi.tn</td>
-                  <td>22145789</td>
-                  <td>1456</td>
-                  <td>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
-                  </td>
-               </tr> 
-            </tbody>
-            <tbody>
-               <tr >
-                  <td>Mhamdi</td>
-                  <td>Chaima</td> 
-                  <td>m.mhamdi17129@pi.tn</td>
-                  <td>22634789</td>
-                  <td>17129</td>
+               <tr *ngFor="let el of elements; let i = index">
+                  <td>{{ el.nomUser }}</td>
+                  <td>{{ el.prenomUser }}</td>
+                  <td>{{ el.emailUser }}</td>
+                  <td>{{ el.telUser }}</td>
+                  <td>{{ el.id }}</td>
                   <td>
                      <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
                      <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
