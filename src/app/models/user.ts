@@ -4,4 +4,5 @@ export class User {
     prenomUser:string;
     telUser:string;
     emailUser:string;
+    roles:string[];
 }
