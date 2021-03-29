@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ApiEnseignantService } from '../services/api-enseignant.service';
 
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,9 @@ export class RegisterComponent implements OnInit {
     private apiService: ApiEnseignantService,
     private toastr: ToastrService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+
+    private loginService: LoginService
   ) {
     let formControls = {
       nom: new FormControl('', Validators.required),
@@ -88,6 +91,28 @@ export class RegisterComponent implements OnInit {
         }
       },
       error => console.log('ERROR : ' + error)
+    );
+  }
+
+
+  /////////////////////new 
+  signup(){
+    console.log(this.addUSR.value);
+    
+    this.loginService.signup(this.addUSR.value).subscribe(
+      (data) => {
+        if (data) {
+         window.location.reload();
+          console.warn(data);
+          this.toastr.success("L'utilisateur a été enregistré", "", {
+            timeOut: 3000,
+          });
+        }
+      },
+      (ex) => {
+        console.warn(ex);
+        this.toastr.warning("Erreur", "", { timeOut: 3000 });
+      }
     );
   }
 }

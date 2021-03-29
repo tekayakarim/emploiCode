@@ -30,11 +30,17 @@ return this.httpClient.post(this.URL+'/signin',{
 /**
  * signup
  */
-public signup(user: User): Observable<any> {
-  return this.httpClient.post(this.URL+'/signup',user
-  , {
-    responseType: "text",
-  });
+public signup(credentials): Observable<any> {
+  return this.httpClient.post(this.URL+'/signup',{
+    userName: credentials.mail,
+    password: credentials.password,
+    nom: credentials.nom,
+    prenom: credentials.prenom,
+    tel:credentials.tel,
+    email:credentials.mail,
+    groupe:credentials.group,
+    role:credentials.role
+  }, this.httpOptions);
 }
 
 }
