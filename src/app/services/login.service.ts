@@ -23,7 +23,7 @@ export class LoginService {
  public login(credentials): Observable<any> {
    this.loggedIn.next(true);
 return this.httpClient.post(this.URL+'/signin',{
-  userName: credentials.username,
+  userName: credentials.userName,
   password: credentials.password
 }, this.httpOptions);
 }

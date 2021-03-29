@@ -18,12 +18,12 @@
             <div class="col-md-6 position-relative">
                 <div class="sign-in-from">
                     <h1 class="mb-0">Connexion</h1> 
-                    <form class="mt-4"  [formGroup]="logForm" (ngSubmit)="verifUser()">
+                    <form class="mt-4"  [formGroup]="logForm" (ngSubmit)=" submitFunction()">
                         <div class="form-group">
                             <label>E-mail :</label>
-                            <input type="text" class="form-control mb-0"  name="mail" formControlName="mail" >
-                            <div *ngIf="mail.touched && mail.invalid">
-                                <small *ngIf="mail.errors.required" class="text-danger">E-mail est Obilgatoire<br></small>
+                            <input type="text" class="form-control mb-0"  name="userName" formControlName="userName" >
+                            <div *ngIf="userName.touched && userName.invalid">
+                                <small *ngIf="userName.errors.required" class="text-danger">E-mail est Obilgatoire<br></small>
                             </div>
                         </div>
                         <div class="form-group">
