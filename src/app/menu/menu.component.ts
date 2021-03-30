@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TokenStorageService } from "src/app/services/token-storage.service";
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -8,17 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
    isAdmin = false ; 
    isReclamant = false ; 
-  constructor() { }
 
+   jwtHelper = new JwtHelperService();
+  constructor( private tokenStorage: TokenStorageService) { }
+
+  roles ="";
+  username: String;
+  
   ngOnInit(): void {
-     console.log("roleee : "+localStorage.getItem("roleUser"));
-     if(localStorage.getItem("roleUser")=="ADMIN"){
-        this.isAdmin = true ; 
-        this.isReclamant = false ; 
-     }else{
-        this.isAdmin = false ; 
-        this.isReclamant = true ;
-     }
-  }
+   if (this.tokenStorage.getToken() != null) {
+
+     let user = this.jwtHelper.decodeToken(this.tokenStorage.getToken());
+     this.roles = user.roles[0].authority;
+     this.username = user.sub;
+   }
+ }
+
 
 }

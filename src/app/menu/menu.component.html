@@ -19,20 +19,20 @@
           <ul id="iq-sidebar-toggle" class="iq-menu">
              <li class="iq-menu-title"><i class="ri-subtraNct-line"></i><span>Menu Principale</span></li>
              
-             <li>
+             <li *ngIf="roles.indexOf('ROLE_CHEFDEPARTEMENT') > -1">
                <a routerLink="/home/classes" class="iq-waves-effect"><i class="fa fa-list"></i><span>Classes</span></a>
             </li> 
-            <li >
+            <li *ngIf="roles.indexOf('ROLE_CHEFDEPARTEMENT') > -1">
                <a routerLink="/home/modules" class="iq-waves-effect"><i class="fa fa-list"></i><span>Modules</span></a>
             </li> 
-            <li >
+            <li *ngIf="roles.indexOf('ROLE_CHEFDEPARTEMENT') > -1">
                <a routerLink="/home/seances" class="iq-waves-effect"><i class="fa fa-list"></i><span>Seances</span></a>
             </li> 
            
-            <li>
+            <li *ngIf="roles.indexOf('ROLE_CHEFDEPARTEMENT') > -1">
                <a routerLink="/home/etudiants" class="iq-waves-effect"><i class="fa fa-list"></i><span>Etudiants</span></a>
             </li>
-            <li>
+            <li *ngIf="roles.indexOf('ROLE_CHEFDEPARTEMENT') > -1">
                <a routerLink="/home/enseignant" class="iq-waves-effect"><i class="fa fa-user"></i><span>Enseignants</span></a>
             </li> 
             <li>

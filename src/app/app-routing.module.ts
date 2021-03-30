@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 
 
 import { RegisterComponent } from './register/register.component';
-import { AuthGuard } from './auth.guard';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { CalendrierComponent} from './calendrier/calendrier.component';
@@ -15,12 +15,13 @@ import { ClassesComponent} from './classes/classes.component';
 import { EnseignantsComponent } from './enseignant/enseignants/enseignants.component';
 import { EtudiantsComponent } from './etudiant/etudiants/etudiants.component';
 
+import { AuthGuardService as AuthGuard } from "./services/auth-guard.service";
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
   {path:'home', component: HomeComponent,
-  // canActivate:[AuthGuard],
+   canActivate:[AuthGuard],
     children: [
       { path: '', component: DashboardComponent}, 
       {path: 'calendrier' , component: CalendrierComponent},

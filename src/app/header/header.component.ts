@@ -3,6 +3,8 @@ import { DOCUMENT } from '@angular/common';
 import { ApiAdminService } from '../services/api-admin.service';
 import { Router } from '@angular/router';
 
+import { TokenStorageService } from "src/app/services/token-storage.service";
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,20 +12,38 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   userNP: string;
-  role: string;
+  role: string; 
+  jwtHelper = new JwtHelperService();
   constructor(
     @Inject(DOCUMENT) private document: any,
     private service: ApiAdminService,
-    private router: Router
+    private router: Router,
+
+    private tokenStorage: TokenStorageService
   ) {}
   elem;
   isLoggedIn: Boolean;
 
   ngOnInit(): void {
-    this.userNP = localStorage.getItem('userNP');
+    if (this.tokenStorage.getToken() != null) {
+
+      let user = this.jwtHelper.decodeToken(this.tokenStorage.getToken());
+      this.role = user.roles[0].authority;
+      this.userNP = user.sub;
+      if (this.role == "ROLE_ETUDIANT" ) {
+        this.role="Etudiant"
+      }
+      if (this.role == "ROLE_CHEFDEPARTEMENT") {
+        this.role="Chef Departement"
+      }
+      if (this.role == "ROLE_ENSEIGNANT") {
+        this.role="Enseignant"
+      }
+    }
+  /*  this.userNP = localStorage.getItem('userNP');
     this.role = localStorage.getItem('roleUser');
     this.elem = document.documentElement;
-    this.isLoggedIn = this.service.isLoggedIn();
+    this.isLoggedIn = this.service.isLoggedIn();*/
   }
 
   quitter() {
@@ -48,5 +68,13 @@ export class HeaderComponent implements OnInit {
       /* IE/Edge */
       this.elem.msRequestFullscreen();
     }
+  }
+
+////new
+  leave() {
+    this.tokenStorage.signOut();
+    this.router.navigateByUrl("login");
+   
+  //  console.warn(this.tokenStorageService.getUser());
   }
 }

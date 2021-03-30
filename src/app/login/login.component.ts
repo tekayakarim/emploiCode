@@ -130,7 +130,7 @@ export class LoginComponent implements OnInit {
             //      this.roles = this.tokenStorage.getUser().roles;
             console.warn(this.roles);
             if (this.roles == "ROLE_ETUDIANT" || this.roles == "ROLE_ENSEIGNANT") {
-              this.router.navigateByUrl("calendrier");
+              this.router.navigateByUrl("/home/calendrier");
             }
             if (this.roles == "ROLE_CHEFDEPARTEMENT") {
               this.router.navigateByUrl("home");
