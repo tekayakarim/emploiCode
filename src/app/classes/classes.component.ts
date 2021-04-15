@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  , Input} from '@angular/core';
 import { ApiClasseService } from 'src/app/services/api-classe.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,6 +11,7 @@ import { ClasseService } from "../services/classe.service";
   styleUrls: ['./classes.component.css']
 })
 export class ClassesComponent implements OnInit {
+  @Input("codeC") codeC: string;
   recs:any = [];
   idU:number ; 
   modalContent:undefined ;
@@ -28,9 +29,36 @@ export class ClassesComponent implements OnInit {
    this.getAllClasse();
   }
  
-  onDeleteClick(): void{
-    // Delete workspace here
+  onDeleteClick(codeC): void{
+    this.classeService.deleteClasse(codeC).subscribe(
+      (data) => {
+      
 
+        if (data) {
+          console.warn(data);
+          let text = data;
+          if (text.includes("fail")) {
+            this.toastr
+              .warning(data, "", {
+                timeOut: 5000,
+              })
+              .onHidden.subscribe(() => {});
+          } else {
+            this.toastr
+              .success("classe avec code classe =" + codeC + " effacé", "", {
+                timeOut: 1000,
+              })
+              .onHidden.subscribe(() => {
+                window.location.reload();
+              });
+          }
+        }
+      },
+      (ex) => {
+        console.log(ex);
+        this.toastr.warning("Erreur", "", { timeOut: 3000 });
+      }
+    );
   }
  
 

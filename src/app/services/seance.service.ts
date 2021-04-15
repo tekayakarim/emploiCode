@@ -20,5 +20,10 @@ export class SeanceService {
     return this.httpClient.get<Seance[]>(this.url + "/getAll");
   }
 
+  public deleteSeance(id: number): Observable<any> {
+    return this.httpClient.delete(this.url + "/delete?codeS=" + id, {
+      responseType: "text",
+    });
+  }
 
 }

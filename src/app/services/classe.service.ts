@@ -18,5 +18,9 @@ export class ClasseService {
   public getAllClasse(): Observable<Classe[]> {
     return this.httpClient.get<Classe[]>(this.url + "/getAll");
   }
-
+  public deleteClasse(id: number): Observable<any> {
+    return this.httpClient.delete(this.url + "/delete?codeC=" + id, {
+      responseType: "text",
+    });
+  }
 }

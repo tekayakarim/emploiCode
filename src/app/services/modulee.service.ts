@@ -20,4 +20,9 @@ export class ModuleeService {
     return this.httpClient.get<Modulee[]>(this.url + "/getAll");
   }
 
+  public deleteModule(id: number): Observable<any> {
+    return this.httpClient.delete(this.url + "/delete?codeM=" + id, {
+      responseType: "text",
+    });
+  }
 }

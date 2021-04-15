@@ -5,6 +5,7 @@
        </div> 
     </div>
     <div class="iq-card-body">
+      <a routerLink="../addClasse">  <button type="button" class="btn btn-primary btn-sm mr-2" >Ajouter une classe</button></a>
       <div class="table-responsive">
          <table class="table mb-0 table-borderless">
             <thead>
@@ -20,7 +21,7 @@
                   <td>{{ el.niveauC }}</td> 
                   <td>
                      <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick([el.codeC])><i class="fa fa-trash"></i></button>
                   </td>
                </tr> 
             </tbody>

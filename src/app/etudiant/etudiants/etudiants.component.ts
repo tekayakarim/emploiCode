@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit , Input} from '@angular/core'; 
 import { ToastrService } from 'ngx-toastr';
 import { ApiEtudiantService } from '../../services/api-etudiant.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -12,7 +12,7 @@ import { EtudiantService } from "../../services/etudiant.service";
   styleUrls: ['./etudiants.component.css']
 })
 export class EtudiantsComponent implements OnInit {
-
+  @Input("id") id: string;
   elements: User[];
 
   reponses:any = [];
@@ -28,8 +28,36 @@ export class EtudiantsComponent implements OnInit {
     //this.getMesClasses();
     this.getAllEtudiant();
   }
-  onDeleteClick(): void{
-    // Delete workspace here
+  onDeleteClick(id): void{
+    this.etudiantService.deletetudiant(id).subscribe(
+      (data) => {
+      
+
+        if (data) {
+          console.warn(data);
+          let text = data;
+          if (text.includes("fail")) {
+            this.toastr
+              .warning(data, "", {
+                timeOut: 5000,
+              })
+              .onHidden.subscribe(() => {});
+          } else {
+            this.toastr
+              .success("enseignant avec id=" + id + " effacé", "", {
+                timeOut: 1000,
+              })
+              .onHidden.subscribe(() => {
+                window.location.reload();
+              });
+          }
+        }
+      },
+      (ex) => {
+        console.log(ex);
+        this.toastr.warning("Erreur", "", { timeOut: 3000 });
+      }
+    );
 
   }
 

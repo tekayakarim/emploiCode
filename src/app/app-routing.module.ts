@@ -16,6 +16,7 @@ import { EnseignantsComponent } from './enseignant/enseignants/enseignants.compo
 import { EtudiantsComponent } from './etudiant/etudiants/etudiants.component';
 
 import { AuthGuardService as AuthGuard } from "./services/auth-guard.service";
+import { AddClasseComponent } from './classes/add-classe/add-classe.component';
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
   {path:'login', component: LoginComponent},
@@ -30,6 +31,8 @@ const routes: Routes = [
       {path: 'seances' , component: SeancesComponent},
       {path: 'enseignant' , component: EnseignantsComponent},
       {path: 'etudiants' , component: EtudiantsComponent},
+
+      {path: 'addClasse' , component: AddClasseComponent},
       
   ]}
 ];

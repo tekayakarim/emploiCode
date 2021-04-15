@@ -19,5 +19,9 @@ export class EtudiantService {
   public getAllEtudiant(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.url + "/getAll");
   }
-
+  public deletetudiant(id: number): Observable<any> {
+    return this.httpClient.delete(this.url + "/delete?id=" + id, {
+      responseType: "text",
+    });
+  }
 }

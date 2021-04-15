@@ -102,11 +102,12 @@ export class RegisterComponent implements OnInit {
     this.loginService.signup(this.addUSR.value).subscribe(
       (data) => {
         if (data) {
-         window.location.reload();
           console.warn(data);
           this.toastr.success("L'utilisateur a été enregistré", "", {
-            timeOut: 3000,
+            timeOut: 6000,
           });
+          this.router.navigate(['/login']);
+         
         }
       },
       (ex) => {

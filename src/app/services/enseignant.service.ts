@@ -20,4 +20,11 @@ export class EnseignantService {
     return this.httpClient.get<User[]>(this.url + "/getAll");
   }
 
+
+  public deleteEnseignant(id: number): Observable<any> {
+    return this.httpClient.delete(this.url + "/delete?id=" + id, {
+      responseType: "text",
+    });
+  }
+
 }

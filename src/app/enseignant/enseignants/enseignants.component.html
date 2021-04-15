@@ -23,8 +23,9 @@
                   <td>{{ el.emailUser }}</td>
                   <td>{{ el.telUser }}</td>
                   <td>
+                     
                      <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick()><i class="fa fa-trash"></i></button>
+                     <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick([el.id])><i class="fa fa-trash"></i></button>
                   </td>
                </tr> 
             </tbody>
