@@ -17,6 +17,8 @@ import { EtudiantsComponent } from './etudiant/etudiants/etudiants.component';
 
 import { AuthGuardService as AuthGuard } from "./services/auth-guard.service";
 import { AddClasseComponent } from './classes/add-classe/add-classe.component';
+import { AddModuleComponent } from './modules/add-module/add-module.component';
+import { AddSeanceComponent } from './seances/add-seance/add-seance.component';
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
   {path:'login', component: LoginComponent},
@@ -33,7 +35,8 @@ const routes: Routes = [
       {path: 'etudiants' , component: EtudiantsComponent},
 
       {path: 'addClasse' , component: AddClasseComponent},
-      
+      {path: 'addModule' , component: AddModuleComponent},
+      {path: 'addSeance' , component: AddSeanceComponent},
   ]}
 ];
 

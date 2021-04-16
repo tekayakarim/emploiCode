@@ -25,6 +25,8 @@ import { EnseignantsComponent } from './enseignant/enseignants/enseignants.compo
 import { EtudiantsComponent } from './etudiant/etudiants/etudiants.component'; // a plugin
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import { AddClasseComponent } from './classes/add-classe/add-classe.component';
+import { AddModuleComponent } from './modules/add-module/add-module.component';
+import { AddSeanceComponent } from './seances/add-seance/add-seance.component';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
  interactionPlugin,
@@ -51,7 +53,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ClassesComponent,
     EnseignantsComponent,
     EtudiantsComponent,
-    AddClasseComponent
+    AddClasseComponent,
+    AddModuleComponent,
+    AddSeanceComponent
   ],
   imports: [
     BrowserModule,

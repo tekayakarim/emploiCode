@@ -8,36 +8,36 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ClasseService } from "../../services/classe.service";
+import { ModuleeService } from "../../services/modulee.service";
 @Component({
-  selector: 'app-add-classe',
-  templateUrl: './add-classe.component.html',
-  styleUrls: ['./add-classe.component.css']
+  selector: 'app-add-module',
+  templateUrl: './add-module.component.html',
+  styleUrls: ['./add-module.component.css']
 })
-export class AddClasseComponent implements OnInit {
+export class AddModuleComponent implements OnInit {
 
-  addCl: FormGroup;
+  addMo: FormGroup;
 
   constructor(
-    public classeService: ClasseService,
+    public moduleeService: ModuleeService,
     private toastr: ToastrService,
     private fb: FormBuilder
 
   ) { 
-
     let formControls = {
-      codeC: new FormControl('', Validators.required),
-      niveauC: new FormControl('', Validators.required),
-     
+      codeM: new FormControl('', Validators.required),
+      nomM: new FormControl('', Validators.required),
+      niveau: new FormControl('', Validators.required),
+      semestre: new FormControl('', Validators.required),
     };
-    this.addCl = this.fb.group(formControls);
+    this.addMo = this.fb.group(formControls);
   }
- 
+
   ngOnInit(): void {
   }
 
   onAddClick(): void{
-    this.classeService.createClasse(this.addCl.value).subscribe(
+    this.moduleeService.createModule(this.addMo.value).subscribe(
       (data) => {
       
 
@@ -69,4 +69,5 @@ export class AddClasseComponent implements OnInit {
       }
     );
   }
+
 }

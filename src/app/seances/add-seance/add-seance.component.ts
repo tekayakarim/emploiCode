@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
 import {
   Validators,
   FormGroup,
@@ -8,36 +7,37 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ClasseService } from "../../services/classe.service";
+import { SeanceService } from "../../services/seance.service";
 @Component({
-  selector: 'app-add-classe',
-  templateUrl: './add-classe.component.html',
-  styleUrls: ['./add-classe.component.css']
+  selector: 'app-add-seance',
+  templateUrl: './add-seance.component.html',
+  styleUrls: ['./add-seance.component.css']
 })
-export class AddClasseComponent implements OnInit {
+export class AddSeanceComponent implements OnInit {
 
-  addCl: FormGroup;
+  addSe: FormGroup;
 
   constructor(
-    public classeService: ClasseService,
+    public seanceService: SeanceService,
     private toastr: ToastrService,
     private fb: FormBuilder
 
-  ) { 
+  ) {
 
     let formControls = {
-      codeC: new FormControl('', Validators.required),
-      niveauC: new FormControl('', Validators.required),
-     
+      codeS: new FormControl('', Validators.required),
+      heureDeb: new FormControl('', Validators.required),
+      heureFin: new FormControl('', Validators.required),
+      date: new FormControl('', Validators.required),
     };
-    this.addCl = this.fb.group(formControls);
-  }
+    this.addSe = this.fb.group(formControls);
+   }
  
   ngOnInit(): void {
   }
 
   onAddClick(): void{
-    this.classeService.createClasse(this.addCl.value).subscribe(
+    this.seanceService.createSeance(this.addSe.value).subscribe(
       (data) => {
       
 

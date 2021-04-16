@@ -1,0 +1,34 @@
+<div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+    <div class="iq-card-header d-flex justify-content-between">
+        <div class="iq-header-title">
+            <h4 class="card-title">Ajout d'un module </h4>
+        </div>
+    </div>
+    <div class="iq-card-body">
+        <div class="table-responsive">
+            <form [formGroup]="addMo"> 
+                <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputName1">code module</label>
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="code module" formControlName="codeM">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName2">nom du module</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="nom du module" formControlName="nomM">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName2">niveau du module</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="niveau du module" formControlName="niveau">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName2">semestre du module</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="semestre du module" formControlName="semestre">
+                          </div>
+                       
+                          <button type="submit"  class="btn btn-primary" (click)=onAddClick()>Envoyer</button> 
+                          <a routerLink="../modules">  <button type="reset"  class="btn btn-light">Cancel</button></a>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>
