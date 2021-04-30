@@ -3,4 +3,6 @@ export class Seance {
     heureDeb:string;
     heureFin:string;
     date:string;
+    type:string;
+    jour:string;
 }

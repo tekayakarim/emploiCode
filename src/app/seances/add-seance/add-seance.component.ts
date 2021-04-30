@@ -16,7 +16,8 @@ import { SeanceService } from "../../services/seance.service";
 export class AddSeanceComponent implements OnInit {
 
   addSe: FormGroup;
-
+isRattrapage=false;
+isNotRattrapage=false;
   constructor(
     public seanceService: SeanceService,
     private toastr: ToastrService,
@@ -29,6 +30,8 @@ export class AddSeanceComponent implements OnInit {
       heureDeb: new FormControl('', Validators.required),
       heureFin: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      jour: new FormControl('', Validators.required),
     };
     this.addSe = this.fb.group(formControls);
    }
@@ -69,4 +72,17 @@ export class AddSeanceComponent implements OnInit {
       }
     );
   }
+
+  onChanged(value: any) {
+  
+    if (value.startsWith("rattrapage")) {
+      this.isRattrapage = true;
+      this.isNotRattrapage=false;
+   }
+   if (!value.startsWith("rattrapage")) {
+    this.isNotRattrapage=true;
+    this.isRattrapage=false;
+ }
+  }
+
 }
