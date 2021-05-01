@@ -25,4 +25,8 @@ export class ModuleeService {
       responseType: "text",
     });
   }
+
+  public getModule(codeM:string): Observable<Modulee> {
+    return this.httpClient.get<Modulee>(this.url + "/get?codeM="+codeM);
+  }
 }

@@ -78,7 +78,8 @@ for (let i = 0; i < this.elements.length; i++) {
   }
   if(element.jour!=null)
   {
-    this.events.push( {title:element.codeS, start: element.date+"T"+element.heureDeb,
+    this.events.push( {title:"seance: "+element.codeS+" module: "+element.module.nomM
+    , start: element.date+"T"+element.heureDeb,
     end: element.date+"T"+element.heureFin,
     color: color, 
     daysOfWeek: [ element.jour ] ,
@@ -92,12 +93,7 @@ for (let i = 0; i < this.elements.length; i++) {
   } );
 }
 
-    this.events.push( { title:"se.codeS", start: '2021-04-27T14:30:00',
-    end: '2021-04-27T14:30:00',
-    dateEnd:"2021-05-21",
-    color: 'red',
-    daysOfWeek: [ '1' ]
-   });
+
 
   console.log(this.events);
   this.calendarOptions.events=this.events;

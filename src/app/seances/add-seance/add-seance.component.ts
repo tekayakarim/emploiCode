@@ -8,6 +8,10 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { SeanceService } from "../../services/seance.service";
+
+import { Modulee } from "../../models/modulee";
+import { Seance } from "../../models/seance";
+import { ModuleeService } from "../../services/modulee.service";
 @Component({
   selector: 'app-add-seance',
   templateUrl: './add-seance.component.html',
@@ -15,13 +19,17 @@ import { SeanceService } from "../../services/seance.service";
 })
 export class AddSeanceComponent implements OnInit {
 
+  elements: Modulee[];
+  module:Modulee=new Modulee();
+  seance:Seance=new Seance();
   addSe: FormGroup;
 isRattrapage=false;
 isNotRattrapage=false;
   constructor(
     public seanceService: SeanceService,
     private toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public moduleeService: ModuleeService
 
   ) {
 
@@ -32,15 +40,31 @@ isNotRattrapage=false;
       date: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
       jour: new FormControl('', Validators.required),
+      codeM: new FormControl('', Validators.required),
     };
     this.addSe = this.fb.group(formControls);
    }
  
   ngOnInit(): void {
+    this.getAllModulee(); 
   }
 
   onAddClick(): void{
-    this.seanceService.createSeance(this.addSe.value).subscribe(
+  
+    this.seance.codeS=this.addSe.value.codeS;
+    this.seance.date=this.addSe.value.date;
+    this.seance.heureDeb=this.addSe.value.heureDeb;
+    this.seance.heureFin=this.addSe.value.heureFin;
+    this.seance.jour=this.addSe.value.jour;
+    this.seance.type=this.addSe.value.type;
+
+    this.getModule(this.addSe.value.codeM);
+    this.seance.module=this.module;
+    console.log(this.module);
+    
+    console.log(this.seance);
+    
+    this.seanceService.createSeance(this.seance).subscribe(
       (data) => {
       
 
@@ -85,4 +109,32 @@ isNotRattrapage=false;
  }
   }
 
+  getAllModulee() {
+    
+    this.moduleeService
+      .getAllModule()
+      .subscribe((data) => {
+        if (data) {
+          console.warn(data);
+          this.elements = data;
+        }
+
+      });
+  }
+getModule(codem){
+  this.moduleeService.getModule(codem).subscribe((data) => {
+    if (data) {
+    this.module.codeM=data.codeM;
+    this.module.niveau=data.niveau;
+    this.module.nomM=data.nomM;
+    this.module.semestre=data.semestre;
+
+     console.log(this.module);
+     
+      
+    }
+
+  });
+  
+}
 }

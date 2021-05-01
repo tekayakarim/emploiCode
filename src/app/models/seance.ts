@@ -1,3 +1,5 @@
+import { Modulee } from "./modulee";
+
 export class Seance {
     codeS:string;
     heureDeb:string;
@@ -5,4 +7,5 @@ export class Seance {
     date:string;
     type:string;
     jour:string;
+    module:Modulee;
 }

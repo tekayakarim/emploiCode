@@ -12,6 +12,18 @@
                             <label for="exampleInputName1">code seance</label>
                             <input type="text" class="form-control" id="exampleInputName1" placeholder="code seance" formControlName="codeS">
                           </div>
+
+                          <div class="form-group" >
+                            <label for="exampleInputName1">module </label>
+                              <select class="form-control mb-0" id="rr"  name="module" formControlName="codeM" >
+                                  <option value="" selected>Choisir module</option>
+                                  <option
+                            *ngFor="let el of elements; let i = index"
+                              value="{{ el.codeM }}"
+                                  >{{ el.nomM }} </option
+                >
+                              </select>
+                          </div>
                           <div class="form-group">
                             <label for="exampleInputName2">heure de debut</label>
                             <input type="text" class="form-control" id="exampleInputName2" placeholder="heure de debut" formControlName="heureDeb"

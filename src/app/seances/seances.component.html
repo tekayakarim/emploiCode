@@ -13,8 +13,8 @@
                   <th scope="col">Code</th> 
                   <th scope="col">Heure debut</th> 
                   <th scope="col">Heure fin</th>
-                  <th scope="col">date</th> 
                   <th scope="col">type</th> 
+                  <th scope="col">nom module</th> 
                   <th scope="col">Action</th> 
                </tr>
             </thead>
@@ -23,8 +23,8 @@
                   <td>{{ el.codeS }}</td>
                   <td>{{ el.heureDeb }}</td>
                   <td>{{ el.heureFin }}</td>
-                  <td>{{ el.date }}</td>
                   <td>{{ el.type }}</td>
+                  <td>{{ el.module.nomM }}</td>
                   <td>
                      <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
                      <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick([el.codeS])><i class="fa fa-trash"></i></button>
