@@ -1,0 +1,26 @@
+<div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+    <div class="iq-card-header d-flex justify-content-between">
+        <div class="iq-header-title">
+            <h4 class="card-title">modifier d'une classe </h4>
+        </div>
+    </div>
+    <div class="iq-card-body">
+        <div class="table-responsive">
+            <form [formGroup]="modifCl"> 
+                <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputName1">code classe</label>
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="code classe" formControlName="codeC">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail3">niveau classe</label>
+                            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="niveau classse" formControlName="niveauC">
+                          </div>
+                       
+                          <button type="submit"  class="btn btn-primary" (click)=onModifClick()>Envoyer</button> 
+                          <a routerLink="../classes">  <button type="reset"  class="btn btn-light">Cancel</button></a>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>

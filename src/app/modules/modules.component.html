@@ -25,7 +25,7 @@
                   <td>{{ el.niveau }}</td>
                   <td>{{ el.semestre }}</td>
                   <td>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <a routerLink="../modifModule/[el.codeM]">    <button type="button" class="btn btn-primary btn-sm mr-2" ><i class="fa fa-eye"></i></button></a>
                      <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick([el.codeM])><i class="fa fa-trash"></i></button>
                   </td>
                </tr> 

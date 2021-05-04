@@ -5,6 +5,7 @@
        </div> 
     </div>
     <div class="iq-card-body">
+      <a routerLink="../addEtudiant">  <button type="button" class="btn btn-primary btn-sm mr-2" >Ajouter un Etudiant</button></a>
       <div class="table-responsive">
          <table class="table mb-0 table-borderless">
             <thead>
@@ -25,7 +26,6 @@
                   <td>{{ el.telUser }}</td>
                   <td>{{ el.id }}</td>
                   <td>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
                      <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick([el.id])><i class="fa fa-trash"></i></button>
                   </td>
                </tr> 

@@ -19,6 +19,12 @@ import { AuthGuardService as AuthGuard } from "./services/auth-guard.service";
 import { AddClasseComponent } from './classes/add-classe/add-classe.component';
 import { AddModuleComponent } from './modules/add-module/add-module.component';
 import { AddSeanceComponent } from './seances/add-seance/add-seance.component';
+import { AddEnseignantComponent } from './enseignant/add-enseignant/add-enseignant.component';
+import { AddEtudiantComponent } from './etudiant/add-etudiant/add-etudiant.component';
+
+import { ModifClasseComponent } from './classes/modif-classe/modif-classe.component';
+import { ModifModuleComponent } from './modules/modif-module/modif-module.component';
+import { ModifSeanceComponent } from './seances/modif-seance/modif-seance.component';
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full' },
   {path:'login', component: LoginComponent},
@@ -37,6 +43,11 @@ const routes: Routes = [
       {path: 'addClasse' , component: AddClasseComponent},
       {path: 'addModule' , component: AddModuleComponent},
       {path: 'addSeance' , component: AddSeanceComponent},
+      {path: 'addEnseignant' , component: AddEnseignantComponent},
+      {path: 'addEtudiant' , component: AddEtudiantComponent},
+      {path: 'modifClasse/:classeid' , component: ModifClasseComponent},
+      {path: 'modifModule/:moduleid' , component: ModifModuleComponent},
+      {path: 'modifSeance/:seanceid' , component: ModifSeanceComponent},
   ]}
 ];
 

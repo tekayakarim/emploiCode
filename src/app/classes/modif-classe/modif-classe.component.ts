@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
 import {
   Validators,
   FormGroup,
@@ -8,36 +7,33 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ModuleeService } from "../../services/modulee.service";
+import { ClasseService } from "../../services/classe.service";
 @Component({
-  selector: 'app-add-module',
-  templateUrl: './add-module.component.html',
-  styleUrls: ['./add-module.component.css']
+  selector: 'app-modif-classe',
+  templateUrl: './modif-classe.component.html',
+  styleUrls: ['./modif-classe.component.css']
 })
-export class AddModuleComponent implements OnInit {
-
-  addMo: FormGroup;
-
+export class ModifClasseComponent implements OnInit {
+  modifCl: FormGroup;
   constructor(
-    public moduleeService: ModuleeService,
+    public classeService: ClasseService,
     private toastr: ToastrService,
     private fb: FormBuilder
 
-  ) { 
+  ) {
     let formControls = {
-      codeM: new FormControl('', Validators.required),
-      nomM: new FormControl('', Validators.required),
-      niveau: new FormControl('', Validators.required),
-      semestre: new FormControl('', Validators.required),
+      codeC: new FormControl('', Validators.required),
+      niveauC: new FormControl('', Validators.required),
+     
     };
-    this.addMo = this.fb.group(formControls);
-  }
+    this.modifCl = this.fb.group(formControls);
+   }
 
   ngOnInit(): void {
   }
 
-  onAddClick(): void{
-    this.moduleeService.createModule(this.addMo.value).subscribe(
+  onModifClick(): void{
+    this.classeService.createClasse(this.modifCl.value).subscribe(
       (data) => {
       
 
@@ -68,6 +64,5 @@ export class AddModuleComponent implements OnInit {
         this.toastr.warning("Erreur", "", { timeOut: 3000 });
       }
     );
-  }
- 
+  } 
 }

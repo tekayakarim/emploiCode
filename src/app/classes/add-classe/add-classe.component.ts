@@ -68,5 +68,5 @@ export class AddClasseComponent implements OnInit {
         this.toastr.warning("Erreur", "", { timeOut: 3000 });
       }
     );
-  }
+  } 
 }

@@ -11,18 +11,17 @@ import { SeanceService } from "../../services/seance.service";
  
 import { Modulee } from "../../models/modulee";
 import { Seance } from "../../models/seance";
-import { ModuleeService } from "../../services/modulee.service";
+import { ModuleeService } from "../../services/modulee.service"
 @Component({
-  selector: 'app-add-seance',
-  templateUrl: './add-seance.component.html',
-  styleUrls: ['./add-seance.component.css']
+  selector: 'app-modif-seance',
+  templateUrl: './modif-seance.component.html',
+  styleUrls: ['./modif-seance.component.css']
 })
-export class AddSeanceComponent implements OnInit {
-
+export class ModifSeanceComponent implements OnInit {
   elements: Modulee[];
   module:Modulee=new Modulee();
   seance:Seance=new Seance();
-  addSe: FormGroup;
+  modifSe: FormGroup;
 isRattrapage=false;
 isNotRattrapage=false;
   constructor(
@@ -31,8 +30,7 @@ isNotRattrapage=false;
     private fb: FormBuilder,
     public moduleeService: ModuleeService
 
-  ) {
-
+  ) { 
     let formControls = {
       codeS: new FormControl('', Validators.required),
       heureDeb: new FormControl('', Validators.required),
@@ -42,23 +40,23 @@ isNotRattrapage=false;
       jour: new FormControl('', Validators.required),
       codeM: new FormControl('', Validators.required),
     };
-    this.addSe = this.fb.group(formControls);
-   }
- 
+    this.modifSe = this.fb.group(formControls);
+  }
+
   ngOnInit(): void {
     this.getAllModulee(); 
   }
 
-  onAddClick(): void{
+  onModifClick(): void{
   
-    this.seance.codeS=this.addSe.value.codeS;
-    this.seance.date=this.addSe.value.date;
-    this.seance.heureDeb=this.addSe.value.heureDeb;
-    this.seance.heureFin=this.addSe.value.heureFin;
-    this.seance.jour=this.addSe.value.jour;
-    this.seance.type=this.addSe.value.type;
+    this.seance.codeS=this.modifSe.value.codeS;
+    this.seance.date=this.modifSe.value.date;
+    this.seance.heureDeb=this.modifSe.value.heureDeb;
+    this.seance.heureFin=this.modifSe.value.heureFin;
+    this.seance.jour=this.modifSe.value.jour;
+    this.seance.type=this.modifSe.value.type;
 
-    this.getModule(this.addSe.value.codeM);
+    this.getModule(this.modifSe.value.codeM);
     this.seance.module=this.module;
     console.log(this.module);
     

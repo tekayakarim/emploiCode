@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
 import {
   Validators,
   FormGroup,
@@ -10,19 +9,16 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { ModuleeService } from "../../services/modulee.service";
 @Component({
-  selector: 'app-add-module',
-  templateUrl: './add-module.component.html',
-  styleUrls: ['./add-module.component.css']
+  selector: 'app-modif-module',
+  templateUrl: './modif-module.component.html',
+  styleUrls: ['./modif-module.component.css']
 })
-export class AddModuleComponent implements OnInit {
-
-  addMo: FormGroup;
-
+export class ModifModuleComponent implements OnInit {
+  modifMo: FormGroup;
   constructor(
     public moduleeService: ModuleeService,
     private toastr: ToastrService,
     private fb: FormBuilder
-
   ) { 
     let formControls = {
       codeM: new FormControl('', Validators.required),
@@ -30,14 +26,13 @@ export class AddModuleComponent implements OnInit {
       niveau: new FormControl('', Validators.required),
       semestre: new FormControl('', Validators.required),
     };
-    this.addMo = this.fb.group(formControls);
+    this.modifMo = this.fb.group(formControls);
   }
 
   ngOnInit(): void {
   }
-
-  onAddClick(): void{
-    this.moduleeService.createModule(this.addMo.value).subscribe(
+  onModifClick(): void{
+    this.moduleeService.createModule(this.modifMo.value).subscribe(
       (data) => {
       
 
@@ -69,5 +64,4 @@ export class AddModuleComponent implements OnInit {
       }
     );
   }
- 
 }

@@ -26,7 +26,7 @@
                   <td>{{ el.type }}</td>
                   <td>{{ el.module.nomM }}</td>
                   <td>
-                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                     <a routerLink="../modifSeance/[el.codeS]" >   <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button></a>
                      <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick([el.codeS])><i class="fa fa-trash"></i></button>
                   </td>
                </tr> 
