@@ -23,4 +23,14 @@ export class ClasseService {
       responseType: "text",
     });
   }
+
+  public updateClasse(classe:Classe): Observable<any> {
+    return this.httpClient.put(this.url + "/update", classe, {
+      responseType: "text",
+    });
+  }
+
+  public getClasse(codeC :string): Observable<Classe> {
+    return this.httpClient.get<Classe>(this.url + "/get?codeC="+codeC);
+  }
 }

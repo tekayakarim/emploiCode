@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 
 import {
   Validators,
@@ -8,32 +8,42 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ClasseService } from "../../services/classe.service";
+import { Classe } from "../../models/classe";
+import { Router ,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-modif-classe',
   templateUrl: './modif-classe.component.html',
   styleUrls: ['./modif-classe.component.css']
 })
 export class ModifClasseComponent implements OnInit {
+  codeC:string;
   modifCl: FormGroup;
+  classe: Classe=new Classe();
   constructor(
     public classeService: ClasseService,
     private toastr: ToastrService,
-    private fb: FormBuilder
-
+    private fb: FormBuilder,
+    private router: Router,
+    private actRouter: ActivatedRoute
   ) {
     let formControls = {
-      codeC: new FormControl('', Validators.required),
       niveauC: new FormControl('', Validators.required),
      
     };
     this.modifCl = this.fb.group(formControls);
+
+    this.codeC = this.actRouter.snapshot.params.classeid;
+
    }
 
   ngOnInit(): void {
+    this.getModule();
   }
 
   onModifClick(): void{
-    this.classeService.createClasse(this.modifCl.value).subscribe(
+ this.modifCl.value.codeC=this.codeC;
+     
+    this.classeService.updateClasse(this.modifCl.value).subscribe(
       (data) => {
       
 
@@ -52,7 +62,7 @@ export class ModifClasseComponent implements OnInit {
                 timeOut: 1000,
               })
               .onHidden.subscribe(() => {
-               window.location.reload();
+                this.router.navigate(['home/classes']);
               
               });
               
@@ -65,4 +75,23 @@ export class ModifClasseComponent implements OnInit {
       }
     );
   } 
+  getModule(){
+    console.warn();
+    
+    this.classeService.getClasse(this.codeC).subscribe(
+      (data) => {
+      
+
+        if (data) {
+          console.warn(data);
+        this.classe=data;
+
+        }
+      },
+      (ex) => {
+        console.log(ex);
+        this.toastr.warning("Erreur", "", { timeOut: 3000 });
+      }
+    );
+  }
 }

@@ -78,7 +78,7 @@ export class AddEnseignantComponent implements OnInit {
           this.toastr.success("L'utilisateur a été enregistré", "", {
             timeOut: 6000,
           });
-          this.router.navigate(['/login']);
+          this.router.navigate(['home/enseignant']);
          
         }
       },

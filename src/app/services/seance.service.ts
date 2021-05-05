@@ -26,4 +26,9 @@ export class SeanceService {
     });
   }
 
+  public updateSeance(seance:Seance): Observable<any> {
+    return this.httpClient.put(this.url + "/update", seance, {
+      responseType: "text",
+    });
+  }
 }

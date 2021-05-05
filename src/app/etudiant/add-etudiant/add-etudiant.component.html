@@ -5,9 +5,8 @@
         </div>
     </div>
     <div class="iq-card-body">
-        <div class="sign-in-from">
-            <h1 class="mb-0">Inscription</h1>
             <form class="mt-4" [formGroup]="addUSR" (ngSubmit)=" signup()">
+                <div class="form-group">
                 <div class="form-row">
                     <div class="col"> 
                         <label for="tt">Nom :</label>
@@ -59,9 +58,7 @@
                     <div class="col"> 
                         <label for="rr">Rôle :</label> 
                         <select class="form-control mb-0" id="rr"  name="role" formControlName="role">
-                            <option value="">Choisir Rôle</option>
-                            <option value="Etudiant">Etudiant </option> 
-                            <option value="Enseignant">Enseignant </option> 
+                            <option value="Etudiant" selected>Etudiant </option> 
                         </select>
                         <div *ngIf="role.touched && role.invalid">
                             <small *ngIf="role.errors.required" class="text-danger">role est Obilgatoire<br></small>
@@ -76,13 +73,10 @@
                             <small *ngIf="password.errors.required" class="text-danger">Mot de passe est Obilgatoire<br></small>
                         </div>
                     </div>
-                </div><br>
-                <div class="d-inline-block w-100"> 
-                    <button type="submit" [disabled]="addUSR.invalid" class="btn btn-primary float-right">Valider</button>
                 </div>
-                <br>
-                 
-            </form>
-        </div>
+                <button type="submit"  class="btn btn-primary" [disabled]="addUSR.invalid" >Envoyer</button> 
+                <a routerLink="../etudiant">  <button type="reset"  class="btn btn-light">Cancel</button></a>
+            </div>
+        </form>
     </div>
 </div>

@@ -10,15 +10,23 @@
                 <div class="form-group">
                           <div class="form-group">
                             <label for="exampleInputName1">code classe</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="code classe" formControlName="codeC">
+                            <input type="text" class="form-control" id="exampleInputName1" 
+                            placeholder="code classe" 
+                          
+                            value="{{classe.codeC}}"
+                            disabled>
                           </div>
                           <div class="form-group">
                             <label for="exampleInputEmail3">niveau classe</label>
-                            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="niveau classse" formControlName="niveauC">
+                            <input type="email" class="form-control" id="exampleInputEmail3" 
+                            placeholder="niveau classse" 
+                            formControlName="niveauC"
+                            value="{{classe.niveauC}}"
+                            >
                           </div>
                        
                           <button type="submit"  class="btn btn-primary" (click)=onModifClick()>Envoyer</button> 
-                          <a routerLink="../classes">  <button type="reset"  class="btn btn-light">Cancel</button></a>
+                          <a routerLink="/home/classes">  <button type="button"  class="btn btn-light">Cancel</button></a>
                  </div>
             </form>
         </div>

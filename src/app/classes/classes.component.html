@@ -20,7 +20,7 @@
                   <td>{{ el.codeC }}</td>
                   <td>{{ el.niveauC }}</td> 
                   <td>
-                     <a routerLink="../modifClasse/[el.codeC]">     <button type="button" class="btn btn-primary btn-sm mr-2" ><i class="fa fa-eye"></i></button></a>
+                     <a routerLink="../modifClasse/{{el.codeC}}">     <button type="button" class="btn btn-primary btn-sm mr-2" ><i class="fa fa-eye"></i></button></a>
                      <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick([el.codeC])><i class="fa fa-trash"></i></button>
                   </td>
                </tr> 
