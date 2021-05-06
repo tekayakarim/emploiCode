@@ -1,4 +1,5 @@
 import { Modulee } from "./modulee";
+import { User } from "./user";
 
 export class Seance {
     codeS:string;
@@ -8,4 +9,5 @@ export class Seance {
     type:string;
     jour:string;
     module:Modulee;
+    enseignant:User;
 }

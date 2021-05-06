@@ -37,7 +37,7 @@ export class ModifClasseComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.getModule();
+    this.getClasse();
   }
 
   onModifClick(): void{
@@ -65,7 +65,7 @@ export class ModifClasseComponent implements OnInit {
                 this.router.navigate(['home/classes']);
               
               });
-              
+               
           }
         }
       },
@@ -75,7 +75,7 @@ export class ModifClasseComponent implements OnInit {
       }
     );
   } 
-  getModule(){
+  getClasse(){
     console.warn();
     
     this.classeService.getClasse(this.codeC).subscribe(

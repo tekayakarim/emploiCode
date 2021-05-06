@@ -12,16 +12,19 @@ import { SeanceService } from "../../services/seance.service";
 import { Modulee } from "../../models/modulee";
 import { Seance } from "../../models/seance";
 import { ModuleeService } from "../../services/modulee.service";
+import { User } from "../../models/user";
+import { EnseignantService } from "../../services/enseignant.service";
 @Component({
   selector: 'app-add-seance',
   templateUrl: './add-seance.component.html',
   styleUrls: ['./add-seance.component.css']
 })
 export class AddSeanceComponent implements OnInit {
-
+  elementsEnsei:User[];
   elements: Modulee[];
   module:Modulee=new Modulee();
   seance:Seance=new Seance();
+  enseignant:User=new User();
   addSe: FormGroup;
 isRattrapage=false;
 isNotRattrapage=false;
@@ -29,7 +32,8 @@ isNotRattrapage=false;
     public seanceService: SeanceService,
     private toastr: ToastrService,
     private fb: FormBuilder,
-    public moduleeService: ModuleeService
+    public moduleeService: ModuleeService,
+    public enseignantService: EnseignantService
 
   ) {
 
@@ -41,12 +45,14 @@ isNotRattrapage=false;
       type: new FormControl('', Validators.required),
       jour: new FormControl('', Validators.required),
       codeM: new FormControl('', Validators.required),
+      id: new FormControl('', Validators.required),
     };
     this.addSe = this.fb.group(formControls);
    }
  
   ngOnInit(): void {
     this.getAllModulee(); 
+    this.getAllEnseignant();
   }
 
   onAddClick(): void{
@@ -60,9 +66,10 @@ isNotRattrapage=false;
 
     this.getModule(this.addSe.value.codeM);
     this.seance.module=this.module;
-    console.log(this.module);
-    
-    console.log(this.seance);
+
+    this.getEnseignant(this.addSe.value.id);
+    this.seance.enseignant=this.enseignant;
+    console.warn(this.seance);
     
     this.seanceService.createSeance(this.seance).subscribe(
       (data) => {
@@ -72,18 +79,14 @@ isNotRattrapage=false;
           console.warn(data);
           let text = data;
           if (text.includes("fail")) {
-            this.toastr
-              .warning(data, "", {
-                timeOut: 5000,
-              })
-              .onHidden.subscribe(() => {});
+         
           } else {
             this.toastr
               .success("" + text , "", {
                 timeOut: 1000,
               })
               .onHidden.subscribe(() => {
-               window.location.reload();
+              window.location.reload();
               
               });
               
@@ -136,5 +139,36 @@ getModule(codem){
 
   });
   
+}
+
+getAllEnseignant() {
+    
+  this.enseignantService
+    .getAllEnseignant()
+    .subscribe((data) => {
+      if (data) {
+        console.warn(data);
+        this.elementsEnsei = data;
+      }
+
+    });
+}
+getEnseignant(id){
+  this.enseignantService.getEnseignant(id).subscribe((data) => {
+    if (data) {
+    this.enseignant.id=data.id;
+    this.enseignant.nomUser=data.nomUser;
+    this.enseignant.prenomUser=data.prenomUser;
+    this.enseignant.telUser=data.prenomUser;
+    this.enseignant.emailUser=data.emailUser;
+    this.enseignant.roles=data.roles;
+    this.enseignant.userName=data.userName;
+
+     console.log(this.enseignant);
+     
+      
+    }
+
+  });
 }
 }

@@ -12,6 +12,7 @@ import { SeanceService } from "../../services/seance.service";
 import { Modulee } from "../../models/modulee";
 import { Seance } from "../../models/seance";
 import { ModuleeService } from "../../services/modulee.service"
+import { Router ,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-modif-seance',
   templateUrl: './modif-seance.component.html',
@@ -21,14 +22,18 @@ export class ModifSeanceComponent implements OnInit {
   elements: Modulee[];
   module:Modulee=new Modulee();
   seance:Seance=new Seance();
-  modifSe: FormGroup;
+  modifSe: FormGroup; 
+  seanceR:Seance=new Seance();
+codeS:string;
 isRattrapage=false;
 isNotRattrapage=false;
   constructor(
     public seanceService: SeanceService,
     private toastr: ToastrService,
     private fb: FormBuilder,
-    public moduleeService: ModuleeService
+    public moduleeService: ModuleeService,
+    private router: Router,
+    private actRouter: ActivatedRoute
 
   ) { 
     let formControls = {
@@ -41,14 +46,16 @@ isNotRattrapage=false;
       codeM: new FormControl('', Validators.required),
     };
     this.modifSe = this.fb.group(formControls);
+    this.codeS = this.actRouter.snapshot.params.seanceid;
   }
 
   ngOnInit(): void {
     this.getAllModulee(); 
+    this.getSeance();
   }
 
   onModifClick(): void{
-  
+    this.modifSe.value.codeS=this.codeS;
     this.seance.codeS=this.modifSe.value.codeS;
     this.seance.date=this.modifSe.value.date;
     this.seance.heureDeb=this.modifSe.value.heureDeb;
@@ -58,11 +65,11 @@ isNotRattrapage=false;
 
     this.getModule(this.modifSe.value.codeM);
     this.seance.module=this.module;
-    console.log(this.module);
+  
     
-    console.log(this.seance);
+    console.warn(this.seance);
     
-    this.seanceService.createSeance(this.seance).subscribe(
+    this.seanceService.updateSeance(this.seance).subscribe(
       (data) => {
       
 
@@ -81,7 +88,7 @@ isNotRattrapage=false;
                 timeOut: 1000,
               })
               .onHidden.subscribe(() => {
-               window.location.reload();
+                this.router.navigate(['/home/seances']);
               
               });
               
@@ -135,4 +142,22 @@ getModule(codem){
   });
   
 }
+getSeance(){
+  this.seanceService.getSeance(this.codeS).subscribe(
+    (data) => {
+    
+
+      if (data) {
+        console.warn(data);
+      this.seanceR=data;
+
+      }
+    },
+    (ex) => {
+      console.log(ex);
+      this.toastr.warning("Erreur", "", { timeOut: 3000 });
+    }
+  );
+}
+
 }

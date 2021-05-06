@@ -29,4 +29,10 @@ export class ModuleeService {
   public getModule(codeM:string): Observable<Modulee> {
     return this.httpClient.get<Modulee>(this.url + "/get?codeM="+codeM);
   }
+
+  public updateModule(modulee:Modulee): Observable<any> {
+    return this.httpClient.put(this.url + "/update", modulee, {
+      responseType: "text",
+    });
+  }
 }

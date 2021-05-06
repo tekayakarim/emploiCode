@@ -1,7 +1,7 @@
 <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
     <div class="iq-card-header d-flex justify-content-between">
         <div class="iq-header-title">
-            <h4 class="card-title">modifier un module </h4>
+            <h4 class="card-title">Ajout d'un module </h4>
         </div>
     </div>
     <div class="iq-card-body">
@@ -9,16 +9,36 @@
             <form [formGroup]="modifMo"> 
                 <div class="form-group">
                           <div class="form-group">
-                            <label for="exampleInputName1">code classe</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="code classe" formControlName="codeC">
+                            <label for="exampleInputName1">code module</label>
+                            <input type="text" class="form-control" id="exampleInputName1" 
+                            placeholder="code module"
+                            value="{{module.codeM}}"
+                            disabled>
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputEmail3">niveau classe</label>
-                            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="niveau classse" formControlName="niveauC">
+                            <label for="exampleInputName2">nom du module</label>
+                            <input type="text" class="form-control" id="exampleInputName2"
+                             placeholder="nom du module" 
+                             formControlName="nomM"
+                             value="{{module.nomM}}">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName2">niveau du module</label>
+                            <input type="text" class="form-control" id="exampleInputName2" 
+                            placeholder="niveau du module" 
+                            formControlName="niveau"
+                            value="{{module.niveau}}">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputName2">semestre du module</label>
+                            <input type="text" class="form-control" id="exampleInputName2" 
+                            placeholder="semestre du module" 
+                            formControlName="semestre"
+                            value="{{module.semestre}}">
                           </div>
                        
                           <button type="submit"  class="btn btn-primary" (click)=onModifClick()>Envoyer</button> 
-                          <a routerLink="../classes">  <button type="reset"  class="btn btn-light">Cancel</button></a>
+                          <a routerLink="/home/modules">  <button type="reset"  class="btn btn-light">Cancel</button></a>
                  </div>
             </form>
         </div>

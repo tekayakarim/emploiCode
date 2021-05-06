@@ -27,4 +27,8 @@ export class EnseignantService {
     });
   }
 
+  public getEnseignant(id:number): Observable<User> {
+    return this.httpClient.get<User>(this.url + "/get?id="+id);
+  }
+
 }

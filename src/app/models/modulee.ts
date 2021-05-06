@@ -3,4 +3,7 @@ export class Modulee {
     nomM:string;
     niveau:string;
     semestre:string;
+
+
+
 }

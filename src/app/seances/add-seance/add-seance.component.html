@@ -20,8 +20,17 @@
                                   <option
                             *ngFor="let el of elements; let i = index"
                               value="{{ el.codeM }}"
-                                  >{{ el.nomM }} </option
-                >
+                                  >{{ el.nomM }} </option >
+                              </select>
+                          </div>
+                          <div class="form-group" >
+                            <label for="exampleInputName1">enseignant </label>
+                              <select class="form-control mb-0" id="rr"  name="enseignant" formControlName="id" >
+                                  <option value="" selected>Choisir enseignant</option>
+                                  <option
+                            *ngFor="let el of elementsEnsei; let i = index"
+                              value="{{ el.id }}"
+                                  >{{ el.nomUser }}&nbsp; {{el.prenomUser}} </option >
                               </select>
                           </div>
                           <div class="form-group">

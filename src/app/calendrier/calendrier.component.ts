@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Seance } from "../models/seance";
 import { SeanceService } from "../services/seance.service";
 import { Title } from '@angular/platform-browser';
+import { rendererTypeName } from '@angular/compiler';
 @Component({
   selector: 'app-calendrier',
   templateUrl: './calendrier.component.html',
@@ -30,7 +31,7 @@ export class CalendrierComponent implements OnInit {
     navLinkDayClick: function(date, jsEvent) {
       console.log('day', date.toISOString());
     },
-    
+
     dateClick: this.handleDateClick.bind(this), // bind is important!
     events:this.getAllSeance()
    
@@ -64,7 +65,10 @@ setEvents(): any[]{
 this.events= [{title:"", start: "",
 end:"",
 color:"",
-daysOfWeek: [ '' ]}];
+daysOfWeek: [ '' ],
+height:700,
+aspectRatio:1.5
+}];
 
 for (let i = 0; i < this.elements.length; i++) {
   const element = this.elements[i];
@@ -79,10 +83,12 @@ for (let i = 0; i < this.elements.length; i++) {
   if(element.jour!=null)
   {
     this.events.push( {title:"seance: "+element.codeS+" module: "+element.module.nomM
+    +" enseignant: "+element.enseignant.nomUser+" "+element.enseignant.prenomUser
     , start: element.date+"T"+element.heureDeb,
     end: element.date+"T"+element.heureFin,
     color: color, 
     daysOfWeek: [ element.jour ] ,
+
     
     } );  
   }
@@ -90,6 +96,8 @@ for (let i = 0; i < this.elements.length; i++) {
   this.events.push( {title:element.codeS, start: element.date+"T"+element.heureDeb,
   end: element.date+"T"+element.heureFin,
   color: color, 
+
+  
   } );
 }
 

@@ -10,29 +10,37 @@
                 <div class="form-group">
                           <div class="form-group">
                             <label for="exampleInputName1">code seance</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="code seance" formControlName="codeS">
+                            <input type="text" class="form-control" id="exampleInputName1" 
+                            placeholder="code seance" 
+                            value="{{seanceR.codeS}}"
+                            disabled>
                           </div>
 
                           <div class="form-group" >
                             <label for="exampleInputName1">module </label>
-                              <select class="form-control mb-0" id="rr"  name="module" formControlName="codeM" >
+                              <select class="form-control mb-0" id="rr"  name="module" 
+                              formControlName="codeM" >
                                   <option value="" selected>Choisir module</option>
                                   <option
                             *ngFor="let el of elements; let i = index"
                               value="{{ el.codeM }}"
-                                  >{{ el.nomM }} </option
-                >
+                                  >{{ el.nomM }} </option>
                               </select>
                           </div>
                           <div class="form-group">
                             <label for="exampleInputName2">heure de debut</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="heure de debut" formControlName="heureDeb"
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="heure de debut" 
+                            formControlName="heureDeb"
+                            value="{{seanceR.heureDeb}}"
                             onfocus="(this.type='time')"
                             onblur="(this.type='text')">
                           </div>
                           <div class="form-group">
                             <label for="exampleInputName2">heure de fin</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="heure de fin" formControlName="heureFin"
+                            <input type="text" class="form-control" id="exampleInputName2" 
+                            placeholder="heure de fin" 
+                            formControlName="heureFin"
+                            value="{{seanceR.heureFin}}"
                             onfocus="(this.type='time')"
                             onblur="(this.type='text')">
                           </div>
@@ -40,7 +48,7 @@
                           <div class="form-group">
                             <label for="exampleInputName1">type </label>
                               <select class="form-control mb-0" id="rr"  name="type" formControlName="type" (change)="onChanged($event.target.value)">
-                                  <option value="" selected>Choisir type</option>
+                                  <option value="" >Choisir type</option>
                                   <option value="rattrapage">rattrapage </option> 
                                   <option value="seance par quinzaine">seance par quinzaine</option>
                                   <option value="seance fixe">seance fixe </option>  
@@ -50,7 +58,7 @@
                           <div class="form-group" *ngIf="isNotRattrapage">
                             <label for="exampleInputName1">jour d'une semaine </label>
                               <select class="form-control mb-0" id="rr"  name="jour" formControlName="jour" >
-                                  <option value="" selected>Choisir jour</option>
+                                  <option value="" >Choisir jour</option>
                                   <option value="1">lundi </option> 
                                   <option value="2">mardi </option> 
                                   <option value="3">mercredi </option> 
@@ -62,12 +70,14 @@
 
                           <div class="form-group" *ngIf="isRattrapage">
                             <label for="exampleInputName2">date</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="date" formControlName="date" 
+                            <input type="text" class="form-control" id="exampleInputName2" 
+                            placeholder="date" 
+                            formControlName="date"
                             onfocus="(this.type='date')"
                             onblur="(this.type='text')">
                           </div>
                           <button type="submit"  class="btn btn-primary" (click)=onModifClick()>Envoyer</button> 
-                          <a routerLink="../seances">  <button type="reset"  class="btn btn-light">Cancel</button></a>
+                          <a routerLink="home/seances">  <button type="reset"  class="btn btn-light">Cancel</button></a>
                  </div>
             </form>
         </div>

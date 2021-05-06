@@ -15,6 +15,7 @@
                   <th scope="col">Heure fin</th>
                   <th scope="col">type</th> 
                   <th scope="col">nom module</th> 
+                  <th scope="col">enseignant</th> 
                   <th scope="col">Action</th> 
                </tr>
             </thead>
@@ -25,8 +26,9 @@
                   <td>{{ el.heureFin }}</td>
                   <td>{{ el.type }}</td>
                   <td>{{ el.module.nomM }}</td>
+                  <td>{{ el.enseignant.nomUser }}</td>
                   <td>
-                     <a routerLink="../modifSeance/[el.codeS]" >   <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button></a>
+                     <a routerLink="../modifSeance/{{el.codeS}}" >   <button type="button" class="btn btn-primary btn-sm mr-2" ><i class="fa fa-pencil"></i></button></a>
                      <button type="button" class="btn btn-primary btn-sm mr-2" (click)=onDeleteClick([el.codeS])><i class="fa fa-trash"></i></button>
                   </td>
                </tr> 

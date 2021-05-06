@@ -31,4 +31,8 @@ export class SeanceService {
       responseType: "text",
     });
   }
+
+  public getSeance(codeS:string): Observable<Seance> {
+    return this.httpClient.get<Seance>(this.url + "/get?codeS="+codeS);
+  }
 }

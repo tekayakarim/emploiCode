@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+ 
 import {
   Validators,
   FormGroup,
@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ModuleeService } from "../../services/modulee.service";
+import { Router ,ActivatedRoute} from '@angular/router';
+import { Modulee } from "../../models/modulee"
 @Component({
   selector: 'app-modif-module',
   templateUrl: './modif-module.component.html',
@@ -15,24 +17,31 @@ import { ModuleeService } from "../../services/modulee.service";
 })
 export class ModifModuleComponent implements OnInit {
   modifMo: FormGroup;
+  codeM:string;
+  module:Modulee=new Modulee();
   constructor(
     public moduleeService: ModuleeService,
     private toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private actRouter: ActivatedRoute
   ) { 
     let formControls = {
-      codeM: new FormControl('', Validators.required),
       nomM: new FormControl('', Validators.required),
       niveau: new FormControl('', Validators.required),
       semestre: new FormControl('', Validators.required),
     };
     this.modifMo = this.fb.group(formControls);
+    this.codeM = this.actRouter.snapshot.params.moduleid;
   }
 
   ngOnInit(): void {
+    this.getModule();
   }
   onModifClick(): void{
-    this.moduleeService.createModule(this.modifMo.value).subscribe(
+    this.modifMo.value.codeM=this.codeM;
+    
+    this.moduleeService.updateModule(this.modifMo.value).subscribe(
       (data) => {
       
 
@@ -51,11 +60,30 @@ export class ModifModuleComponent implements OnInit {
                 timeOut: 1000,
               })
               .onHidden.subscribe(() => {
-               window.location.reload();
+                this.router.navigate(['/home/modules']);
               
               });
               
           }
+        }
+      },
+      (ex) => {
+        console.log(ex);
+        this.toastr.warning("Erreur", "", { timeOut: 3000 });
+      }
+    );
+  }
+  getModule(){
+    console.warn();
+    
+    this.moduleeService.getModule(this.codeM).subscribe(
+      (data) => {
+      
+
+        if (data) {
+          console.warn(data);
+        this.module=data;
+
         }
       },
       (ex) => {
