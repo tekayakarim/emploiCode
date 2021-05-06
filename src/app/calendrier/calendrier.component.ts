@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule, Inject, enableProdMode  } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular'; // useful for typechecking
-import googleCalendarPlugin from '@fullcalendar/google-calendar';
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";

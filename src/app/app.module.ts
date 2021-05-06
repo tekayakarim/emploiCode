@@ -23,7 +23,7 @@ import { SeancesComponent } from './seances/seances.component';
 import { ClassesComponent } from './classes/classes.component';
 import { EnseignantsComponent } from './enseignant/enseignants/enseignants.component';
 import { EtudiantsComponent } from './etudiant/etudiants/etudiants.component'; // a plugin
-import googleCalendarPlugin from '@fullcalendar/google-calendar';
+
 import { AddClasseComponent } from './classes/add-classe/add-classe.component';
 import { AddModuleComponent } from './modules/add-module/add-module.component';
 import { AddSeanceComponent } from './seances/add-seance/add-seance.component';
