@@ -33,6 +33,16 @@
                                   >{{ el.nomUser }}&nbsp; {{el.prenomUser}} </option >
                               </select>
                           </div>
+                          <div class="form-group" >
+                            <label for="exampleInputName1">classe </label>
+                              <select class="form-control mb-0" id="rr"  name="enseignant" formControlName="codeC" >
+                                  <option value="" selected>Choisir classe</option>
+                                  <option
+                            *ngFor="let el of elementsClasse; let i = index"
+                              value="{{ el.codeC }}"
+                                  >{{ el.CodeC }}&nbsp; {{el.niveauC}} </option >
+                              </select>
+                          </div>
                           <div class="form-group">
                             <label for="exampleInputName2">heure de debut</label>
                             <input type="text" class="form-control" id="exampleInputName2" placeholder="heure de debut" formControlName="heureDeb"

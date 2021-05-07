@@ -8,11 +8,13 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { SeanceService } from "../../services/seance.service";
+import { ClasseService } from "../../services/classe.service";
  
 import { Modulee } from "../../models/modulee";
 import { Seance } from "../../models/seance";
 import { ModuleeService } from "../../services/modulee.service";
 import { User } from "../../models/user";
+import { Classe } from "../../models/classe";
 import { EnseignantService } from "../../services/enseignant.service";
 @Component({
   selector: 'app-add-seance',
@@ -20,11 +22,13 @@ import { EnseignantService } from "../../services/enseignant.service";
   styleUrls: ['./add-seance.component.css']
 })
 export class AddSeanceComponent implements OnInit {
+  elementsClasse:Classe[];
   elementsEnsei:User[];
   elements: Modulee[];
   module:Modulee=new Modulee();
   seance:Seance=new Seance();
   enseignant:User=new User();
+  classe:Classe=new Classe();
   addSe: FormGroup;
 isRattrapage=false;
 isNotRattrapage=false;
@@ -33,7 +37,8 @@ isNotRattrapage=false;
     private toastr: ToastrService,
     private fb: FormBuilder,
     public moduleeService: ModuleeService,
-    public enseignantService: EnseignantService
+    public enseignantService: EnseignantService,
+    public classeService: ClasseService
 
   ) {
 
@@ -46,6 +51,7 @@ isNotRattrapage=false;
       jour: new FormControl('', Validators.required),
       codeM: new FormControl('', Validators.required),
       id: new FormControl('', Validators.required),
+      codeC: new FormControl('', Validators.required),
     };
     this.addSe = this.fb.group(formControls);
    }
@@ -53,6 +59,7 @@ isNotRattrapage=false;
   ngOnInit(): void {
     this.getAllModulee(); 
     this.getAllEnseignant();
+    this.getAllClasse();
   }
 
   onAddClick(): void{
@@ -69,6 +76,10 @@ isNotRattrapage=false;
 
     this.getEnseignant(this.addSe.value.id);
     this.seance.enseignant=this.enseignant;
+
+    this.getClasse(this.addSe.value.codeC);
+    this.seance.cl=this.classe;
+
     console.warn(this.seance);
     
     this.seanceService.createSeance(this.seance).subscribe(
@@ -171,4 +182,29 @@ getEnseignant(id){
 
   });
 }
+getAllClasse() {
+    
+  this.classeService
+    .getAllClasse()
+    .subscribe((data) => {
+      if (data) {
+        console.warn(data);
+        this.elementsClasse = data;
+      }
+
+    });
 }
+getClasse(codeC)
+    {
+  this.classeService.getClasse(codeC).subscribe((data) => {
+    if (data) {
+    this.classe.codeC=data.codeC;
+    this.classe.niveauC=data.niveauC;
+   
+     console.log(this.classe);  
+    }
+    });
+  }
+
+}
+

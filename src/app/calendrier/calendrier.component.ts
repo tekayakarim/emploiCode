@@ -84,6 +84,7 @@ for (let i = 0; i < this.elements.length; i++) {
   {
     this.events.push( {title:"seance: "+element.codeS+" module: "+element.module.nomM
     +" enseignant: "+element.enseignant.nomUser+" "+element.enseignant.prenomUser
+    +" classe: "+element.cl.codeC+" "+element.cl.niveauC
     , start: element.date+"T"+element.heureDeb,
     end: element.date+"T"+element.heureFin,
     color: color, 
