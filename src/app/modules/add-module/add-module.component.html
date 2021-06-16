@@ -21,8 +21,13 @@
                             <input type="text" class="form-control" id="exampleInputName2" placeholder="niveau du module" formControlName="niveau">
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputName2">semestre du module</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="semestre du module" formControlName="semestre">
+                          
+                            <select class="form-control mb-0" formControlName="semestre">
+                              <option value="" selected> Choisir semestre</option>
+                              <option value="semstre 1" > semstre 1</option>
+                              <option value="semstre 2" > semstre 2</option>
+                            </select>
+                           
                           </div>
                        
                           <button type="submit"  class="btn btn-primary" (click)=onAddClick()>Envoyer</button> 

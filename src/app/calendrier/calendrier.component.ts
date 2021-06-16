@@ -17,7 +17,8 @@ export class CalendrierComponent implements OnInit {
 
  elements: Seance[];
  events:any[];
- 
+ sem="semstre 1";
+
 
   constructor(public seanceService: SeanceService) {
   
@@ -59,7 +60,7 @@ export class CalendrierComponent implements OnInit {
 
       });
       return null;
-  }
+  }//end getAllSeance
 setEvents(): any[]{
 
 this.events= [{title:"", start: "",
@@ -70,8 +71,12 @@ height:700,
 aspectRatio:1.5
 }];
 
+
 for (let i = 0; i < this.elements.length; i++) {
   const element = this.elements[i];
+console.warn(element.module.semestre);
+
+  if(element.module.semestre.includes(this.sem)){
 
   let color="blue";
   if (element.type.includes("fix")) {
@@ -103,12 +108,20 @@ for (let i = 0; i < this.elements.length; i++) {
   
   } );
 }
+}//end for
 
 
-
-  console.log(this.events);
   this.calendarOptions.events=this.events;
   return this.events;
+}//end setEvents
+semstre1(){
+  this.sem="semstre 1";
+ console.warn(this.sem);
+ this.getAllSeance();
 }
-
+semstre2(){
+  this.sem="semstre 2";
+console.warn(this.sem);
+this.getAllSeance();
+}
 }

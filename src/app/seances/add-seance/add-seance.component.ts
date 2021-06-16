@@ -89,6 +89,14 @@ isNotRattrapage=false;
         if (data) {
           console.warn(data);
           let text = data;
+          if (text.includes("seance")) {
+            this.toastr
+            .warning(data, "", {
+              timeOut: 5000,
+            })
+            .onHidden.subscribe(() => {});
+          }
+          else 
           if (text.includes("fail")) {
          
           } else {

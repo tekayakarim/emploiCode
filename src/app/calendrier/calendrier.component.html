@@ -1,20 +1,30 @@
+
 <button (click)="toggleWeekends()">Ajouter les weekends</button>
-<div>
+
+<div class="tags">
   
     <label for="head">Rattrapage  &nbsp;&nbsp;</label>
     <input type="color" id="head" name="head"
     value="#DC1801">
 </div>
-<div>
+<div class="tags">
     
     <label for="head">séance fix  &nbsp;&nbsp;</label>
     <input type="color" id="head" name="head"
            value="#0BDC01">
 </div>
-<div>
+<div class="tags">
    
     <label for="head">séance par quinzaine &nbsp;&nbsp; </label>
     <input type="color" id="head" name="head"
     value="#0108DC">
 </div>
+<div  style="text-align: right;">
+<nav class="fc-button-group" id="links">
+    <button class="fc-dayGridMonth-button fc-button fc-button-primary fc-button-active" (click)="semstre1()">semstre 1 </button>
+    <button class="fc-dayGridWeek-button fc-button fc-button-primary" (click)="semstre2()">semstre 2</button>
+    
+  </nav>
+</div>
+<br>
 <full-calendar [options]="calendarOptions" ></full-calendar> 
