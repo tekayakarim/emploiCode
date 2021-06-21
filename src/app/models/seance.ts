@@ -11,4 +11,5 @@ export class Seance {
     module:Modulee;
     enseignant:User;
     cl:Classe;
+    numSalle:number;
 }

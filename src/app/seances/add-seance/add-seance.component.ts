@@ -52,6 +52,7 @@ isNotRattrapage=false;
       codeM: new FormControl('', Validators.required),
       id: new FormControl('', Validators.required),
       codeC: new FormControl('', Validators.required),
+      numSalle: new FormControl(null, Validators.required),
     };
     this.addSe = this.fb.group(formControls);
    }
@@ -79,7 +80,7 @@ isNotRattrapage=false;
 
     this.getClasse(this.addSe.value.codeC);
     this.seance.cl=this.classe;
-
+this.seance.numSalle=this.addSe.value.numSalle;
     console.warn(this.seance);
     
     this.seanceService.createSeance(this.seance).subscribe(
@@ -96,6 +97,14 @@ isNotRattrapage=false;
             })
             .onHidden.subscribe(() => {});
           }
+          else
+          if (text.includes("salle")) {
+            this.toastr
+            .warning(data, "", {
+              timeOut: 5000,
+            })
+            .onHidden.subscribe(() => {});
+          }
           else 
           if (text.includes("fail")) {
          
@@ -105,7 +114,7 @@ isNotRattrapage=false;
                 timeOut: 1000,
               })
               .onHidden.subscribe(() => {
-              window.location.reload();
+             window.location.reload();
               
               });
               
