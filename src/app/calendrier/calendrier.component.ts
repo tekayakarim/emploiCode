@@ -1,13 +1,10 @@
 import { Component, OnInit, NgModule, Inject, enableProdMode  } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular'; // useful for typechecking
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Seance } from "../models/seance";
 import { SeanceService } from "../services/seance.service";
-import { Title } from '@angular/platform-browser';
-import { rendererTypeName } from '@angular/compiler';
+
 @Component({
   selector: 'app-calendrier',
   templateUrl: './calendrier.component.html',
@@ -54,6 +51,8 @@ export class CalendrierComponent implements OnInit {
       .getAllSeance()
       .subscribe((data) => {
         if (data) {
+          console.warn(data);
+          
           this.elements = data;
           return  this.setEvents();
         }
@@ -89,7 +88,9 @@ console.warn(element.module.semestre);
   {
     this.events.push( {title:"seance: "+element.codeS+" module: "+element.module.nomM
     +" enseignant: "+element.enseignant.nomUser+" "+element.enseignant.prenomUser
-    +" classe: "+element.cl.codeC+" "+element.cl.niveauC
+    +" classe: "+element.cl.codeC+" "+element.cl.niveauC+ " salle: "+element.numSalle
+    +" heure debut: "+ element.heureDeb+ " heure fin: "+element.heureFin
+    +" semstre: "+element.module.semestre
     , start: element.date+"T"+element.heureDeb,
     end: element.date+"T"+element.heureFin,
     color: color, 
@@ -101,7 +102,10 @@ console.warn(element.module.semestre);
 
   this.events.push( {title:"seance: "+element.codeS+" module: "+element.module.nomM
   +" enseignant: "+element.enseignant.nomUser+" "+element.enseignant.prenomUser
-  +" classe: "+element.cl.codeC+" "+element.cl.niveauC, start: element.date+"T"+element.heureDeb,
+  +" classe: "+element.cl.codeC+" "+element.cl.niveauC+ " salle: "+element.numSalle
+  +" heure debut: "+ element.heureDeb+ " heure fin: "+element.heureFin
+  +" semstre: "+element.module.semestre
+  , start: element.date+"T"+element.heureDeb,
   end: element.date+"T"+element.heureFin,
   color: color, 
 
